@@ -1,0 +1,20 @@
+1,Paracetamol,2025-07-15,100,0.50,2024-03-01,PharmaCare
+2,Ibuprofen,2025-09-10,80,0.75,2024-03-05,HealthMeds
+3,Amoxicillin,2026-01-20,50,1.25,2024-02-28,MedPlus
+4,Aspirin,2025-05-22,120,0.60,2024-03-10,WellnessPharma
+5,Metformin,2025-08-05,90,2.00,2024-03-12,DiabetesCare
+6,Loratadine,2026-02-14,110,1.10,2024-02-26,AllergyRelief
+7,Vitamin C,2027-03-30,200,0.90,2024-02-20,WellnessHealth
+8,Omeprazole,2025-06-18,70,1.50,2024-03-08,DigestiveMeds
+9,Cough Syrup,2026-04-25,60,3.75,2024-03-02,PharmaSyrup
+10,Saline Solution,2026-12-10,150,0.99,2024-02-18,MedicarePlus
+11,Antiseptic Cream,2027-01-05,40,2.30,2024-02-22,FirstAidEssentials
+12,Blood Pressure Monitor,2028-07-12,15,29.99,2024-02-28,MedTechDevices
+13,Glucose Strips,2026-11-15,200,0.80,2024-03-04,DiabetesCheck
+14,Insulin,2025-09-25,30,15.00,2024-02-27,DiabetesControl
+15,Eye Drops,2025-12-05,90,4.50,2024-03-06,OptiCare
+16,Bandages,2027-08-22,300,0.45,2024-02-19,FirstAidSupplies
+17,Antibiotic Ointment,2026-05-14,55,3.00,2024-02-25,HealthGuard
+18,Multivitamins,2027-09-10,220,1.20,2024-03-01,WellnessStore
+19,Nasal Spray,2026-07-20,85,2.75,2024-02-24,RespiraMeds
+20,Inhaler,2025-10-30,40,19.99,2024-03-09,AsthmaRelief
