@@ -6,8 +6,8 @@ namespace InventoryManagementSystem
     {
         static void Main(string[] args)
         {
-            Store store = new Store(); // Create Store object
-            InventorySection inventorySection = new InventorySection(store); // Create Inventory Section
+            Store store = new Store(); // cret store obj
+            InventorySection inventorySection = new InventorySection(store);
             ExpireSection expireSection = new ExpireSection(store);
             CheckedOutItems checkedOutItems = new CheckedOutItems();
             BillingSection billingSection = new BillingSection(store, checkedOutItems);
@@ -35,7 +35,7 @@ namespace InventoryManagementSystem
                         expireSection.DisplayExpireMenu();
                         break;
                     case "2":
-                        inventorySection.DisplayInventoryMenu(); // Open Inventory Section
+                        inventorySection.DisplayInventoryMenu();
                         break;
                     case "3":
                         billingSection.StartBillingProcess();

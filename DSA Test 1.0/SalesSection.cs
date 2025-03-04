@@ -42,10 +42,10 @@ namespace InventoryManagementSystem
 
             CheckedOutItems tempSalesList = checkedOutItems.LoadFromFile();
 
-            // ✅ Measure sorting time
+            // sorting time
             double executionTime = BubbleSortSales.MeasureExecutionTime(tempSalesList);
 
-            Console.WriteLine($"(Sorting Execution Time: {executionTime:F6} ms)"); // Display with 6 decimal places
+            Console.WriteLine($"(Sorting Execution Time: {executionTime:F6} ms)");
             Console.WriteLine("ID   Name             Quantity   Price   Total Price   Sold Date");
             Console.WriteLine("----------------------------------------------------------------");
 

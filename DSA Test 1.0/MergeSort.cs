@@ -50,13 +50,13 @@ namespace InventoryManagementSystem
             return slow;
         }
 
-        // ✅ High-Precision Execution Time Measurement
+        // time measure with tick
         public static double MeasureExecutionTime(Item head)
         {
             Stopwatch stopwatch = Stopwatch.StartNew();
             Sort(head);
             stopwatch.Stop();
-            return (double)stopwatch.ElapsedTicks / Stopwatch.Frequency * 1000; // Convert to milliseconds
+            return (double)stopwatch.ElapsedTicks / Stopwatch.Frequency * 1000;
         }
     }
 }

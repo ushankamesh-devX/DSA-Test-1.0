@@ -6,18 +6,18 @@ namespace InventoryManagementSystem
 {
     public class Store
     {
-        private Item head; // Linked list head
-        private const string FilePath = "store_inventory.txt"; // File for storing inventory
+        private Item head;
+        private const string FilePath = "store_inventory.txt";
 
         public Item Head { get { return head; } set { head = value; } }
 
         public Store()
         {
             head = null;
-            LoadInventoryFromFile(); // Load data from the file on startup
+            LoadInventoryFromFile(); // load data file on startup
         }
 
-        // Add a new item to the store
+        // add a new item to sottre
         public void AddItem(int id, string name, DateTime expireDate, int quantity, double price, DateTime buyDate, string dealer)
         {
             Item newItem = new Item(id, name, expireDate, quantity, price, buyDate, dealer);
@@ -36,11 +36,11 @@ namespace InventoryManagementSystem
                 current.Next = newItem;
             }
 
-            SaveInventoryToFile(); // Save to file
+            SaveInventoryToFile();
             Console.WriteLine($"Item {name} added successfully!");
         }
 
-        // Remove an item by ID
+        // remove  item by id
         public void RemoveItem(int id)
         {
             if (head == null)
@@ -77,7 +77,7 @@ namespace InventoryManagementSystem
             Console.WriteLine($"Item with ID {id} removed.");
         }
 
-        // Display all items
+        // display all itms
         public void DisplayInventory()
         {
             if (head == null)
@@ -96,18 +96,18 @@ namespace InventoryManagementSystem
                 current = current.Next;
             }
         }
-        //Find Expired Items
+        //find expire 
 
         public void FindExpiredItems(DateTime inputDate, AVLTree expiredTree)
         {
             Item current = head;
-            bool found = false; // Track if any expired item exists
+            bool found = false; // check if any epired available
 
             while (current != null)
             {
                 Console.WriteLine($"Checking: {current.Name} - Expiry Date: {current.ExpireDate.ToShortDateString()}");
 
-                if (current.ExpireDate <= inputDate) // Check if expired
+                if (current.ExpireDate <= inputDate) // check wheather expired
                 {
                     Console.WriteLine($"Adding to AVL Tree: {current.Name} (Expired on {current.ExpireDate.ToShortDateString()})");
                     expiredTree.AddExpiredItem(current);
@@ -122,7 +122,7 @@ namespace InventoryManagementSystem
             }
         }
 
-        // Save inventory to a text file
+        
         private void SaveInventoryToFile()
         {
             StringBuilder sb = new StringBuilder();
@@ -137,7 +137,7 @@ namespace InventoryManagementSystem
             File.WriteAllText(FilePath, sb.ToString());
         }
 
-        // Load inventory from a text file
+        // load inventory from file
         private void LoadInventoryFromFile()
         {
             if (!File.Exists(FilePath))
@@ -162,7 +162,7 @@ namespace InventoryManagementSystem
             }
         }
 
-        // Find an item by ID or Name
+        // find by name or id e
         public Item FindItem(string input)
         {
             Item current = head;
@@ -185,8 +185,8 @@ namespace InventoryManagementSystem
                 if (current.ID == id)
                 {
                     current.Quantity -= quantity;
-                    if (current.Quantity < 0) current.Quantity = 0; // Prevent negative quantity
-                    SaveInventoryToFile(); // Save updated inventory
+                    if (current.Quantity < 0) current.Quantity = 0; //prevent negative qnt
+                    SaveInventoryToFile(); // save updt inventory
                     return;
                 }
                 current = current.Next;

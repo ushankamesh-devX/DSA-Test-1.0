@@ -5,7 +5,7 @@ namespace InventoryManagementSystem
 {
     public class CheckedOutItems
     {
-        public class CheckedOutNode // 🔹 Make Public so it can be accessed in BubbleSortSales.cs
+        public class CheckedOutNode
         {
             public int ID;
             public string Name;
@@ -25,7 +25,7 @@ namespace InventoryManagementSystem
             }
         }
 
-        public CheckedOutNode Head { get;  set; } // 🔹 Make Head Public
+        public CheckedOutNode Head { get;  set; } //head public
 
         private const string FilePath = "checked_out_items.txt";
 
@@ -82,7 +82,7 @@ namespace InventoryManagementSystem
                     double price = double.Parse(parts[3]);
                     DateTime soldDate = DateTime.Parse(parts[4]);
 
-                    salesList.AddCheckedOutItem(id, name, quantity, price, soldDate); // 🔹 Append in order
+                    salesList.AddCheckedOutItem(id, name, quantity, price, soldDate); //apend in order
                 }
             }
 

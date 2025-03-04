@@ -22,19 +22,19 @@ namespace InventoryManagementSystem
             Console.Clear();
             Console.WriteLine("======= BILLING SECTION =======");
 
-            // Step 1: Add Prescription
+           
             AddPrescription();
 
-            // Step 2: Show Available Items
+            
             ShowAvailableItems();
 
-            // Step 3: Select Quantity
+            
             SelectQuantity();
 
-            // Step 4: Confirm Purchase
+            
             ConfirmPurchase();
 
-            // Step 5: Checkout
+            
             Checkout();
         }
 
@@ -44,7 +44,7 @@ namespace InventoryManagementSystem
             Console.WriteLine("======= ADD PRESCRIPTION =======");
             Console.Write("Enter Prescription (e.g., Paracetamol Ibuprofen): ");
             prescription = Console.ReadLine();
-            Console.WriteLine("\n✅ Prescription Added: " + prescription);
+            Console.WriteLine("\nPrescription Added: " + prescription);
             Console.WriteLine("\nPress any key to proceed...");
             Console.ReadKey();
         }
@@ -62,12 +62,12 @@ namespace InventoryManagementSystem
                 Item foundItem = store.FindItem(itemName);
                 if (foundItem != null)
                 {
-                    selectedItems.Add((foundItem.ID, foundItem.Name, foundItem.Quantity, 0)); // Default SelectedQty = 0
+                    selectedItems.Add((foundItem.ID, foundItem.Name, foundItem.Quantity, 0)); // set the Default SelectedQty = 0
                     Console.WriteLine($"{foundItem.ID}\t{foundItem.Name}\t\t{foundItem.Quantity}");
                 }
                 else
                 {
-                    Console.WriteLine($"❌ Item '{itemName}' not found in inventory.");
+                    Console.WriteLine($"Item '{itemName}' not found in inventory.");
                 }
             }
 
@@ -88,7 +88,7 @@ namespace InventoryManagementSystem
                 int selectedQty;
                 while (!int.TryParse(Console.ReadLine(), out selectedQty) || selectedQty <= 0 || selectedQty > availableQty)
                 {
-                    Console.Write("❌ Invalid input. Enter a valid quantity: ");
+                    Console.Write("Invalid input. Enter a valid quantity: ");
                 }
 
                 selectedItems[i] = (id, name, availableQty, selectedQty); // Update selected quantity
@@ -113,18 +113,18 @@ namespace InventoryManagementSystem
             string confirmation = Console.ReadLine();
             if (confirmation.ToUpper() != "Y")
             {
-                Console.WriteLine("\n❌ Purchase Cancelled. Returning to Billing Section.");
+                Console.WriteLine("\nPurchase Cancelled. Returning to Billing Section.");
                 Console.ReadKey();
                 return;
             }
 
-            // Reduce inventory stock
+            //  inventory stock reduce
             foreach (var (id, _, _, selectedQty) in selectedItems)
             {
                 store.ReduceQuantity(id, selectedQty);
             }
 
-            Console.WriteLine("\n✅ Purchase Confirmed! Proceeding to Checkout.");
+            Console.WriteLine("\n Purchase Confirmed! Proceeding to Checkout.");
             Console.WriteLine("\nPress any key to proceed...");
             Console.ReadKey();
         }
@@ -148,8 +148,8 @@ namespace InventoryManagementSystem
             }
 
             checkedOutItems.SaveToFile();
-            selectedItems.Clear(); // Clear temporary list after checkout
-            Console.WriteLine("\n✅ Checkout Successful!");
+            selectedItems.Clear(); // clear temp list after chckout
+            Console.WriteLine("\nCheckout Successful!");
             Console.WriteLine("\nPress any key to return...");
             Console.ReadKey();
         }

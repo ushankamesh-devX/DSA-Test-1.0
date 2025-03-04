@@ -20,13 +20,13 @@ namespace InventoryManagementSystem
 
         private Node root;
 
-        // ✅ Get Height of a Node
+       
         private int Height(Node node) => node == null ? 0 : node.Height;
 
-        // ✅ Get Balance Factor
+        
         private int GetBalance(Node node) => node == null ? 0 : Height(node.Left) - Height(node.Right);
 
-        // ✅ Rotate Right
+        // Rotete Right
         private Node RotateRight(Node y)
         {
             Node x = y.Left;
@@ -41,7 +41,7 @@ namespace InventoryManagementSystem
             return x;
         }
 
-        // ✅ Rotate Left
+        //  Rote Left
         private Node RotateLeft(Node x)
         {
             Node y = x.Right;
@@ -56,12 +56,12 @@ namespace InventoryManagementSystem
             return y;
         }
 
-        // ✅ Insert Expired Item (Sorted by ExpireDate DESCENDING)
+        //  insert expired item decending order by expire date
         private Node Insert(Node node, Item data)
         {
             if (node == null) return new Node(data);
 
-            if (data.ExpireDate > node.Data.ExpireDate)  // Most recent expired first
+            if (data.ExpireDate > node.Data.ExpireDate)  // show recnt expired first
                 node.Left = Insert(node.Left, data);
             else
                 node.Right = Insert(node.Right, data);
@@ -70,22 +70,22 @@ namespace InventoryManagementSystem
 
             int balance = GetBalance(node);
 
-            // Left Heavy (Right Rotation)
+            //  right Rot
             if (balance > 1 && data.ExpireDate > node.Left.Data.ExpireDate)
                 return RotateRight(node);
 
-            // Right Heavy (Left Rotation)
+            //  left rot
             if (balance < -1 && data.ExpireDate <= node.Right.Data.ExpireDate)
                 return RotateLeft(node);
 
-            // Left-Right Case (Left Rotation + Right Rotation)
+            //  left Rote + right rota
             if (balance > 1 && data.ExpireDate <= node.Left.Data.ExpireDate)
             {
                 node.Left = RotateLeft(node.Left);
                 return RotateRight(node);
             }
 
-            // Right-Left Case (Right Rotation + Left Rotation)
+            // right rotation + left rota
             if (balance < -1 && data.ExpireDate > node.Right.Data.ExpireDate)
             {
                 node.Right = RotateRight(node.Right);
@@ -98,11 +98,11 @@ namespace InventoryManagementSystem
         public void AddExpiredItem(Item item)
         {
             root = Insert(root, item);
-            Console.WriteLine($"✅ Added to AVL Tree: {item.Name} (Expired on {item.ExpireDate.ToShortDateString()})");
+            Console.WriteLine($"Added to AVL Tree: {item.Name} (Expired on {item.ExpireDate.ToShortDateString()})");
         }
 
 
-        // ✅ Display Expired Items (Most Recent First)
+        // display expird items ascend
         public void DisplayExpiredItems()
         {
             if (root == null)

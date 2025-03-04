@@ -22,9 +22,9 @@ namespace InventoryManagementSystem
                     double currentTotal = current.Quantity * current.Price;
                     double nextTotal = next.Quantity * next.Price;
 
-                    if (currentTotal < nextTotal) // 🔹 Swap nodes
+                    if (currentTotal < nextTotal) // swap nodes
                     {
-                        if (prev == null) // Swapping Head node
+                        if (prev == null) // swapin head node
                         {
                             salesList.Head = next;
                         }
@@ -36,7 +36,7 @@ namespace InventoryManagementSystem
                         current.Next = next.Next;
                         next.Next = current;
 
-                        // 🔹 Update Pointers
+                        //updt Poinrs
                         prev = next;
                         next = current.Next;
                         swapped = true;
@@ -51,13 +51,13 @@ namespace InventoryManagementSystem
             } while (swapped);
         }
 
-        // ✅ High-Precision Execution Time Measurement
+        //time measurement with ticks
         public static double MeasureExecutionTime(CheckedOutItems salesList)
         {
             Stopwatch stopwatch = Stopwatch.StartNew();
             SortByTotalPrice(salesList);
             stopwatch.Stop();
-            return (double)stopwatch.ElapsedTicks / Stopwatch.Frequency * 1000; // Convert to milliseconds
+            return (double)stopwatch.ElapsedTicks / Stopwatch.Frequency * 1000; // convert to ms
         }
     }
 }

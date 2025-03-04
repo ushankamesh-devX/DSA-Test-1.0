@@ -20,7 +20,8 @@ namespace InventoryManagementSystem
                 Console.WriteLine("1. Show All Items");
                 Console.WriteLine("2. Search for an Item");
                 Console.WriteLine("3. Add New Item");
-                Console.WriteLine("4. Go Back to Main Menu");
+                Console.WriteLine("4. Delete Item by ID");
+                Console.WriteLine("5. Go Back to Main Menu");
                 Console.Write("Select an option: ");
 
                 string choice = Console.ReadLine();
@@ -33,9 +34,12 @@ namespace InventoryManagementSystem
                         SearchItem();
                         break;
                     case "3":
-                        AddNewItem(); // ✅ Now allows adding a new item
+                        AddNewItem();
                         break;
                     case "4":
+                        DeleteItemById();
+                        break;
+                    case "5":
                         return;
                     default:
                         Console.WriteLine("Invalid choice. Press any key to try again...");
@@ -45,7 +49,8 @@ namespace InventoryManagementSystem
             }
         }
 
-        // ✅ Moved Inventory Display Method Here
+
+        //inventory display method
         private void ShowAllItems()
         {
             Console.Clear();
@@ -57,12 +62,12 @@ namespace InventoryManagementSystem
                 return;
             }
 
-            // ✅ Measure sorting time with high precision
+            //measure sort time with ticks
             double executionTime = MergeSort.MeasureExecutionTime(store.Head);
             store.Head = MergeSort.Sort(store.Head);
 
             Console.WriteLine("\n======= Sorted Store Inventory (By Quantity) =======");
-            Console.WriteLine($"(Sorting Execution Time: {executionTime:F6} ms)"); // Displays up to 6 decimal places
+            Console.WriteLine($"(Sorting Execution Time: {executionTime:F6} ms)");
             Console.WriteLine("ID\tName\tExpire Date\tQuantity\tPrice\tBuy Date\tDealer");
 
             Item current = store.Head;
@@ -76,10 +81,31 @@ namespace InventoryManagementSystem
             Console.ReadKey();
         }
 
+        private void DeleteItemById()
+        {
+            Console.Clear();
+            Console.WriteLine("======= DELETE ITEM =======");
+
+            try
+            {
+                Console.Write("Enter Item ID to delete: ");
+                int id = int.Parse(Console.ReadLine());
+
+                //call delete method
+                store.RemoveItem(id);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error: {ex.Message}");
+            }
+
+            Console.WriteLine("\nPress any key to return...");
+            Console.ReadKey();
+        }
 
 
 
-        // ✅ Search for a specific item by ID or Name
+        // search for item by id or name
         private void SearchItem()
         {
             Console.Write("Enter Item ID or Name to search: ");
@@ -137,11 +163,11 @@ namespace InventoryManagementSystem
                 string dealer = Console.ReadLine();
 
                 store.AddItem(id, name, expireDate, quantity, price, buyDate, dealer);
-                Console.WriteLine("\n✅ Item added successfully!");
+                Console.WriteLine("\n item added successfully!");
             }
             catch (Exception ex)
             {
-                Console.WriteLine($"❌ Error: {ex.Message}");
+                Console.WriteLine($"Error: {ex.Message}");
             }
 
             Console.WriteLine("\nPress any key to return...");

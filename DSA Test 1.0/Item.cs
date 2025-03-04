@@ -11,7 +11,7 @@ namespace InventoryManagementSystem
         public double Price { get; set; }
         public DateTime BuyDate { get; set; }
         public string Dealer { get; set; }
-        public Item Next { get; set; } // Pointer to next node in LinkedList
+        public Item Next { get; set; }
 
         public Item(int id, string name, DateTime expireDate, int quantity, double price, DateTime buyDate, string dealer)
         {
@@ -22,7 +22,7 @@ namespace InventoryManagementSystem
             Price = price;
             BuyDate = buyDate;
             Dealer = dealer;
-            Next = null; // Initially, next is null
+            Next = null;
         }
     }
 }
